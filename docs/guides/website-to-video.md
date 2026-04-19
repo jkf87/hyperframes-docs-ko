@@ -1,50 +1,50 @@
-# Website to Video
+# 웹사이트를 비디오로
 
-> Capture any website and turn it into a production video with a single prompt.
+> 프롬프트 하나로 어떤 웹사이트든 캡처해서 프로덕션 비디오로 만듭니다.
 
-Give your AI agent a URL and a creative direction. It captures the site, extracts the brand identity, writes a script and storyboard, generates voiceover, builds animated compositions, and delivers a renderable video.
+AI 에이전트에게 URL과 크리에이티브 방향을 주세요. 사이트를 캡처하고, 브랜드 아이덴티티를 추출하고, 스크립트와 스토리보드를 쓰고, 보이스오버를 생성하고, 애니메이션 컴포지션을 만들어서 렌더링 가능한 비디오로 내보냅니다.
 
 ```
-"Create a 20-second product launch video from https://linear.app.
- Make it feel like an Apple keynote announcement."
+"https://linear.app에서 20초짜리 제품 런칭 비디오를 만들어줘.
+ 애플 키노트 발표처럼 느껴지게."
 ```
 
-## Getting Started
+## 시작하기
 
 <Steps>
-  <Step title="Install skills">
-    Skills teach your AI agent how to capture websites and create HyperFrames compositions. Install once — they persist across sessions.
+  <Step title="Skills 설치">
+    Skills는 AI 에이전트에게 웹사이트를 캡처하고 HyperFrames 컴포지션을 만드는 방법을 가르칩니다. 한 번 설치하면 세션 간에도 유지됩니다.
 
     ```bash theme={null}
     npx skills add heygen-com/hyperframes
     ```
 
-    Works with [Claude Code](https://claude.ai/claude-code), [Cursor](https://cursor.sh), [Gemini CLI](https://github.com/google-gemini/gemini-cli), and [Codex CLI](https://github.com/openai/codex).
+    [Claude Code](https://claude.ai/claude-code), [Cursor](https://cursor.sh), [Gemini CLI](https://github.com/google-gemini/gemini-cli), [Codex CLI](https://github.com/openai/codex)에서 작동합니다.
   </Step>
 
-  <Step title="Prompt your agent">
-    Open your agent in any directory and describe the video you want:
+  <Step title="에이전트에 프롬프트">
+    원하는 디렉토리에서 에이전트를 열고 만들고 싶은 비디오를 묘사하세요:
 
     ```
-    Create a 25-second product launch video from https://example.com. Bold, cinematic, dark theme energy.
+    https://example.com에서 25초짜리 제품 런칭 비디오를 만들어줘. 볼드하고, 시네마틱하고, 다크 테마 에너지로.
     ```
 
-    The agent loads the skill when they see a URL and a video request, and runs the full pipeline — capture, design, script, storyboard, voiceover, build, validate.
+    에이전트는 URL과 비디오 요청을 보면 skill을 로드하고 전체 파이프라인을 실행합니다 — 캡처, 디자인, 스크립트, 스토리보드, 보이스오버, 빌드, 검증.
 
     <Note>
-      Agents also trigger this skill automatically when they see a URL and a video request.
+      에이전트는 URL과 비디오 요청을 보면 이 skill을 자동으로 트리거하기도 합니다.
     </Note>
   </Step>
 
-  <Step title="Preview">
+  <Step title="미리보기">
     ```bash theme={null}
     npx hyperframes preview
     ```
 
-    Opens the video in your browser. Edits reload automatically.
+    브라우저에서 비디오가 열립니다. 편집사항은 자동으로 리로드됩니다.
   </Step>
 
-  <Step title="Render to MP4">
+  <Step title="MP4로 렌더링">
     ```bash theme={null}
     npx hyperframes render --output my-video.mp4
     ```
@@ -57,79 +57,79 @@ Give your AI agent a URL and a creative direction. It captures the site, extract
 </Steps>
 
 <Note>
-  You don't need to run `npx hyperframes capture` manually — the skill instructs the agent to capture as the first step. The capture command is documented [below](#capture-command) for advanced use.
+  `npx hyperframes capture`를 수동으로 실행할 필요는 없습니다 — skill이 에이전트에게 첫 단계로 캡처하도록 지시합니다. capture 명령은 고급 사용을 위해 [아래](#capture-command)에 문서화되어 있습니다.
 </Note>
 
-## How the Pipeline Works
+## 파이프라인 작동 방식
 
-The skill runs 7 steps. Each produces an artifact that feeds the next:
+Skill은 7단계를 실행합니다. 각 단계는 다음 단계로 전달되는 산출물을 만듭니다:
 
-| Step            | Output                              | What happens                                                        |
-| --------------- | ----------------------------------- | ------------------------------------------------------------------- |
-| **Capture**     | `captures/&lt;name&gt;/`                  | Extract screenshots, design tokens, fonts, assets, animations       |
-| **Design**      | `DESIGN.md`                         | Brand reference — colors, typography, do's and don'ts               |
-| **Script**      | `SCRIPT.md`                         | Narration text with hook, story, proof, CTA                         |
-| **Storyboard**  | `STORYBOARD.md`                     | Per-beat creative direction — mood, assets, animations, transitions |
-| **VO + Timing** | `narration.wav` + `transcript.json` | TTS audio with word-level timestamps                                |
-| **Build**       | `compositions/*.html`               | Animated HTML compositions, one per beat                            |
-| **Validate**    | Snapshot PNGs                       | Visual verification before delivery                                 |
+| 단계            | 출력물                               | 하는 일                                                                 |
+| --------------- | ------------------------------------ | ----------------------------------------------------------------------- |
+| **Capture**     | `captures/&lt;name&gt;/`            | 스크린샷, 디자인 토큰, 폰트, 에셋, 애니메이션 추출                      |
+| **Design**      | `DESIGN.md`                          | 브랜드 레퍼런스 — 색상, 타이포그래피, 해야 할 것 / 하지 말아야 할 것    |
+| **Script**      | `SCRIPT.md`                          | 훅, 스토리, 증거, CTA가 포함된 내레이션 텍스트                          |
+| **Storyboard**  | `STORYBOARD.md`                      | 비트별 크리에이티브 방향 — 무드, 에셋, 애니메이션, 트랜지션             |
+| **VO + Timing** | `narration.wav` + `transcript.json`  | 단어 단위 타임스탬프가 있는 TTS 오디오                                  |
+| **Build**       | `compositions/*.html`                | 비트별 애니메이션 HTML 컴포지션                                         |
+| **Validate**    | 스냅샷 PNG                           | 납품 전 시각적 검증                                                     |
 
-## Video Types
+## 비디오 유형
 
-The prompt determines the format. Include a duration and creative direction:
+포맷은 프롬프트가 결정합니다. 길이와 크리에이티브 방향을 포함하세요:
 
-| Type                 | Duration | Example                                                  |
-| -------------------- | -------- | -------------------------------------------------------- |
-| Social ad            | 10–15s   | *"15-second Instagram reel. Energetic, fast cuts."*      |
-| Product launch       | 20–30s   | *"25-second product launch. Apple keynote energy."*      |
-| Product tour         | 30–60s   | *"45-second tour showing the top 3 features."*           |
-| Brand reel           | 15–30s   | *"20-second brand video. Celebrate the design."*         |
-| Feature announcement | 15–25s   | *"Feature announcement highlighting the new AI agents."* |
-| Teaser               | 8–15s    | *"10-second teaser. Super minimal. Just the hook."*      |
+| 유형             | 길이     | 예시                                                     |
+| ---------------- | -------- | -------------------------------------------------------- |
+| 소셜 광고        | 10–15s   | *"15초짜리 인스타 릴. 에너지 넘치게, 빠른 컷으로."*      |
+| 제품 런칭        | 20–30s   | *"25초 제품 런칭. 애플 키노트 에너지로."*                |
+| 제품 투어        | 30–60s   | *"상위 3개 기능을 보여주는 45초 투어."*                  |
+| 브랜드 릴        | 15–30s   | *"20초짜리 브랜드 비디오. 디자인을 뽐내줘."*             |
+| 기능 공지        | 15–25s   | *"새 AI 에이전트를 강조하는 기능 공지."*                 |
+| 티저             | 8–15s    | *"10초 티저. 아주 미니멀하게. 훅만."*                    |
 
 <Tip>
-  Creative direction matters more than format. *"Playful, hand-crafted feel"* or *"dark, developer-focused, show code"* shapes the storyboard and drives every visual decision the agent makes.
+  크리에이티브 방향이 포맷보다 더 중요합니다. *"장난스럽고, 손맛 나는 느낌"* 또는 *"어둡고, 개발자 중심이며, 코드를 보여주는"* 같은 표현이 스토리보드를 형성하고 에이전트의 모든 시각적 결정을 이끕니다.
 </Tip>
 
-## Enriching Captures with Gemini Vision
+## Gemini Vision으로 캡처 강화하기
 
-By default, captures describe assets using DOM context — alt text, nearby headings, CSS classes. Add a [Gemini API key](https://aistudio.google.com/apikey) for richer AI-powered descriptions using vision.
+기본적으로 캡처는 DOM 컨텍스트 — alt 텍스트, 근처의 헤딩, CSS 클래스 — 를 이용해 에셋을 묘사합니다. 비전을 활용한 더 풍부한 AI 기반 묘사를 위해 [Gemini API 키](https://aistudio.google.com/apikey)를 추가하세요.
 
-Create a `.env` file in your project root:
+프로젝트 루트에 `.env` 파일을 만드세요:
 
 ```bash theme={null}
 echo "GEMINI_API_KEY=your-key-here" > .env
 ```
 
 <Tabs>
-  <Tab title="Without Gemini">
+  <Tab title="Gemini 없이">
     ```
     - hero-bg.png — 582KB, section: "Hero", above fold
     ```
 
-    The agent knows the file exists and where it was on the page, but not what it looks like.
+    에이전트는 파일이 존재하고 페이지 어디에 있었는지는 알지만, 어떻게 생겼는지는 모릅니다.
   </Tab>
 
-  <Tab title="With Gemini">
+  <Tab title="Gemini 사용">
     ```
-    - hero-bg.png — 582KB, A gradient wave in purple and blue sweeps
-      across a dark background, creating an aurora-like effect.
+    - hero-bg.png — 582KB, 보라색과 파란색의 그라디언트 웨이브가
+      어두운 배경을 가로지르며 오로라 같은 효과를 만들어냅니다.
     ```
 
-    The agent knows what the image actually shows, enabling better creative decisions in the storyboard.
+    에이전트는 이미지가 실제로 무엇을 보여주는지 알기 때문에 스토리보드에서 더 나은 크리에이티브 결정을 내릴 수 있습니다.
   </Tab>
 </Tabs>
 
-| Tier | Rate limit | Cost per image |
-| ---- | ---------- | -------------- |
-| Free | 5 RPM      | Free           |
-| Paid | 2,000 RPM  | \~\$0.001      |
+| 티어 | 속도 제한  | 이미지당 비용   |
+| ---- | ---------- | --------------- |
+| 무료 | 5 RPM      | 무료            |
+| 유료 | 2,000 RPM  | \~\$0.001       |
 
-A typical capture with 40 images costs about **\$0.04** on the paid tier.
+이미지 40장 짜리 일반적 캡처는 유료 티어에서 약 **\$0.04** 정도 듭니다.
 
-## Capture Command
+## Capture 명령
 
-The skill runs capture automatically, but you can run it directly for pre-caching, debugging, or using the data outside of video production.
+Skill이 캡처를 자동으로 실행하지만, 사전 캐싱, 디버깅, 또는 비디오 제작 외부에서 데이터를 쓰기 위해 직접 실행할 수도 있습니다.
 
 ```bash theme={null}
 npx hyperframes capture https://stripe.com
@@ -144,95 +144,95 @@ npx hyperframes capture https://stripe.com
   Fonts: sohne-var
 ```
 
-| Flag                | Default               | Description                                 |
-| ------------------- | --------------------- | ------------------------------------------- |
-| `-o, --output`      | `captures/&lt;hostname&gt;` | Output directory                            |
-| `--timeout`         | `120000`              | Page load timeout in ms                     |
-| `--skip-assets`     | `false`               | Skip downloading images and fonts           |
-| `--max-screenshots` | `24`                  | Maximum screenshot count                    |
-| `--json`            | `false`               | Output structured JSON for programmatic use |
+| 플래그               | 기본값                  | 설명                                         |
+| -------------------- | ----------------------- | -------------------------------------------- |
+| `-o, --output`       | `captures/&lt;hostname&gt;` | 출력 디렉토리                             |
+| `--timeout`          | `120000`                | 페이지 로드 타임아웃(ms)                     |
+| `--skip-assets`      | `false`                 | 이미지와 폰트 다운로드 건너뛰기              |
+| `--max-screenshots`  | `24`                    | 최대 스크린샷 개수                           |
+| `--json`             | `false`                 | 프로그래밍 용도의 구조화된 JSON 출력         |
 
-### What Gets Captured
+### 캡처되는 내용
 
-| Data            | Description                                                                     |
-| --------------- | ------------------------------------------------------------------------------- |
-| **Screenshots** | Viewport captures at every scroll depth — dynamic count based on page height    |
-| **Colors**      | Pixel-sampled dominant colors + computed styles, including oklch/lab conversion |
-| **Fonts**       | CSS font families + downloaded woff2 files                                      |
-| **Assets**      | Images, SVGs with semantic names, Lottie animations, video previews             |
-| **Text**        | All visible text in DOM order                                                   |
-| **Animations**  | Web Animations API, scroll-triggered animations, WebGL shaders                  |
-| **Sections**    | Page structure with headings, types, background colors                          |
-| **CTAs**        | Buttons and links detected by class names and text patterns                     |
+| 데이터            | 설명                                                                          |
+| ----------------- | ----------------------------------------------------------------------------- |
+| **스크린샷**      | 모든 스크롤 깊이에서의 뷰포트 캡처 — 페이지 높이에 따라 개수가 달라짐         |
+| **색상**          | 픽셀 샘플링 기반 주요 색상 + 계산된 스타일 (oklch/lab 변환 포함)              |
+| **폰트**          | CSS 폰트 패밀리 + 다운로드된 woff2 파일                                       |
+| **에셋**          | 의미 있는 이름의 이미지, SVG, Lottie 애니메이션, 비디오 프리뷰                |
+| **텍스트**        | DOM 순서의 모든 보이는 텍스트                                                 |
+| **애니메이션**    | Web Animations API, 스크롤 트리거 애니메이션, WebGL 셰이더                    |
+| **섹션**          | 헤딩, 유형, 배경색이 포함된 페이지 구조                                       |
+| **CTA**           | 클래스명과 텍스트 패턴으로 감지된 버튼과 링크                                 |
 
-## Snapshot Command
+## Snapshot 명령
 
-Capture key frames from a built video as PNGs — verify compositions without a full render:
+빌드된 비디오의 주요 프레임을 PNG로 캡처 — 전체 렌더 없이 컴포지션을 검증합니다:
 
 ```bash theme={null}
 npx hyperframes snapshot my-project --at 2.9,10.4,18.7
 ```
 
-| Flag        | Default | Description                           |
-| ----------- | ------- | ------------------------------------- |
-| `--frames`  | `5`     | Number of evenly-spaced frames        |
-| `--at`      | —       | Comma-separated timestamps in seconds |
-| `--timeout` | `5000`  | Ms to wait for runtime to initialize  |
+| 플래그      | 기본값   | 설명                                             |
+| ----------- | -------- | ------------------------------------------------ |
+| `--frames`  | `5`      | 균등 간격 프레임 개수                            |
+| `--at`      | —        | 콤마로 구분된 초 단위 타임스탬프                 |
+| `--timeout` | `5000`   | 런타임 초기화 대기 시간(ms)                      |
 
-## Iterating
+## 반복하기
 
-You don't need to re-run the full pipeline to make changes:
+변경을 위해 전체 파이프라인을 다시 실행할 필요는 없습니다:
 
-* **Edit the storyboard** — `STORYBOARD.md` is the creative north star. Change a beat's mood or assets, then ask the agent to rebuild just that beat.
-* **Edit a composition** — open `compositions/beat-3-proof.html` directly and tweak animations, colors, or layout.
-* **Rebuild one beat** — *"Rebuild beat 2 with more energy. Use the product screenshot as full-bleed background."*
+* **스토리보드 편집** — `STORYBOARD.md`는 크리에이티브의 북극성입니다. 비트의 무드나 에셋을 바꾼 뒤 에이전트에게 해당 비트만 다시 빌드하라고 요청하세요.
+* **컴포지션 편집** — `compositions/beat-3-proof.html`을 직접 열어 애니메이션, 색상, 레이아웃을 조정하세요.
+* **한 비트만 리빌드** — *"비트 2를 더 에너지 있게 다시 만들어줘. 제품 스크린샷을 풀블리드 배경으로."*
 
-## Troubleshooting
+## 문제 해결
 
 <AccordionGroup>
-  <Accordion title="Capture times out">
-    Increase the timeout for sites with Cloudflare or heavy client-side rendering:
+  <Accordion title="캡처가 타임아웃됨">
+    Cloudflare나 무거운 클라이언트 사이드 렌더링을 쓰는 사이트는 타임아웃을 늘리세요:
 
     ```bash theme={null}
     npx hyperframes capture https://example.com --timeout 180000
     ```
   </Accordion>
 
-  <Accordion title="Few assets captured">
-    Sites using frameworks like Framer lazy-load images via IntersectionObserver. The capture scrolls through the page to trigger loading, but very long pages may miss images near the bottom. Adding a Gemini key improves descriptions of captured assets, but doesn't increase the count.
+  <Accordion title="에셋이 거의 캡처되지 않음">
+    Framer 같은 프레임워크를 쓰는 사이트는 IntersectionObserver로 이미지를 lazy-load합니다. 캡처는 페이지를 스크롤해서 로딩을 트리거하지만, 아주 긴 페이지는 아래쪽의 이미지를 놓칠 수 있습니다. Gemini 키를 추가하면 캡처된 에셋의 설명이 좋아지지만 개수가 늘어나지는 않습니다.
   </Accordion>
 
-  <Accordion title="Colors look wrong">
-    The capture uses pixel sampling combined with DOM computed styles. Dark sites should show dark colors in the palette. Check the scroll screenshots in `captures/&lt;name&gt;/screenshots/` to see what the capture actually saw.
+  <Accordion title="색상이 이상함">
+    캡처는 픽셀 샘플링과 DOM 계산 스타일을 결합합니다. 어두운 사이트는 팔레트에 어두운 색상이 나와야 합니다. `captures/&lt;name&gt;/screenshots/`의 스크롤 스크린샷을 확인해서 캡처가 실제로 무엇을 봤는지 확인하세요.
   </Accordion>
 
-  <Accordion title="Agent doesn't find the skill">
-    Verify skills are installed:
+  <Accordion title="에이전트가 skill을 찾지 못함">
+    skills가 설치되었는지 확인하세요:
 
     ```bash theme={null}
     npx skills add heygen-com/hyperframes
     ```
 
-    Lead your prompt with *"Use the /website-to-hyperframes skill"* for the most reliable results. Agents also discover it automatically when they see a URL and a video request.
+    가장 안정적인 결과를 위해 프롬프트의 첫머리에 *"Use the /website-to-hyperframes skill"*을 넣으세요. 에이전트는 URL과 비디오 요청을 보면 자동으로 발견하기도 합니다.
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Quickstart" icon="rocket" href="/quickstart">
-    New to HyperFrames? Start here.
+  <Card title="퀵스타트" icon="rocket" href="/quickstart">
+    HyperFrames가 처음이신가요? 여기서 시작하세요.
   </Card>
 
-  <Card title="GSAP Animation" icon="wand-magic-sparkles" href="/guides/gsap-animation">
-    Animation patterns used in compositions.
+  <Card title="GSAP 애니메이션" icon="wand-magic-sparkles" href="/guides/gsap-animation">
+    컴포지션에 쓰이는 애니메이션 패턴.
   </Card>
 
-  <Card title="Rendering" icon="film" href="/guides/rendering">
-    Render to MP4, MOV, or WebM.
+  <Card title="렌더링" icon="film" href="/guides/rendering">
+    MP4, MOV, WebM으로 렌더링.
   </Card>
 
-  <Card title="CLI Reference" icon="terminal" href="/packages/cli">
-    Full command reference.
+  <Card title="CLI 레퍼런스" icon="terminal" href="/packages/cli">
+    전체 명령 레퍼런스.
   </Card>
 </CardGroup>

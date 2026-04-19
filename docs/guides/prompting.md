@@ -1,262 +1,262 @@
-# Prompt Guide
+# 프롬프트 가이드
 
-> How to prompt Claude Code, Cursor, Codex, and other AI agents to author Hyperframes compositions — with copy-pasteable examples and vocabulary tables.
+> Claude Code, Cursor, Codex 및 기타 AI 에이전트에게 Hyperframes 컴포지션을 작성하도록 프롬프트하는 방법 — 복사해서 바로 쓸 수 있는 예제와 어휘 표 제공.
 
-Hyperframes is built for AI agents — compositions are plain HTML, the CLI is non-interactive, and the framework ships [skills](https://github.com/vercel-labs/skills) that teach agents the patterns docs alone don't cover. This guide shows how to prompt agents effectively once skills are installed — the vocabulary that changes output, the iteration patterns that save time, and the rules that prevent breakage.
+Hyperframes는 AI 에이전트를 위해 만들어졌습니다 — 컴포지션은 평범한 HTML이고, CLI는 비대화형이며, 프레임워크는 문서만으로는 전달되지 않는 패턴을 에이전트에게 가르쳐주는 [skills](https://github.com/vercel-labs/skills)를 제공합니다. 이 가이드는 skills가 설치된 이후 에이전트에게 효과적으로 프롬프트를 주는 방법을 보여줍니다 — 결과물을 바꾸는 어휘, 시간을 절약하는 반복 패턴, 그리고 깨짐을 막는 규칙들입니다.
 
-## One-time setup
+## 한 번만 설정하기
 
-Install the skills in your project (or globally for your agent):
+프로젝트에 skills를 설치합니다(또는 에이전트에 전역으로):
 
 ```bash theme={null}
 npx skills add heygen-com/hyperframes
 ```
 
-In Claude Code, restart the session after installing. Skills register as **slash commands**:
+Claude Code에서는 설치 후 세션을 재시작하세요. Skills는 **슬래시 명령어**로 등록됩니다:
 
-| Slash command      | What it loads                                                              |
-| ------------------ | -------------------------------------------------------------------------- |
-| `/hyperframes`     | Composition authoring — HTML structure, timing, captions, TTS, transitions |
-| `/hyperframes-cli` | CLI commands — `init`, `lint`, `preview`, `render`, `transcribe`, `tts`    |
-| `/gsap`            | GSAP animation API — timelines, easing, ScrollTrigger, plugins             |
-
-<Tip>
-  Always prefix Hyperframes prompts with `/hyperframes` (or invoke the skill another way for non-Claude agents). This loads the skill context explicitly so the agent gets composition rules right the first time, instead of relying on whatever it remembers about web video.
-</Tip>
-
-## The two prompt shapes
-
-Most successful Hyperframes prompts fall into one of two shapes.
-
-### Cold start — describe the video
-
-You tell the agent what you want from scratch. Best for greenfield work where you have the creative direction in your head.
-
-> Using `/hyperframes`, create a 10-second product intro with a fade-in title over a dark background and subtle background music.
-
-> Make a 9:16 TikTok-style hook video about \[topic] using `/hyperframes`, with bouncy captions synced to a TTS narration.
-
-Cold-start prompts work best when you specify:
-
-* **Duration** (e.g. "10 seconds", "30s", "5 scenes of 3s each")
-* **Aspect ratio** ("16:9", "9:16 vertical", "1:1 square") — defaults to 1920x1080 otherwise
-* **Mood / style** ("minimal Swiss grid", "warm grain analog", "high-energy social")
-* **Key elements** (title, lower third, captions, background video, music)
-
-### Warm start — turn context into a video
-
-You give the agent something to work with — a URL, a doc, a CSV, a transcript — and ask it to synthesize that into a video. This is where Hyperframes shines because the agent does the research/summarization step *and* the production step in one flow.
-
-> Take a look at this GitHub repo [https://github.com/heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) and explain its uses and architecture to me using `/hyperframes`.
-
-> Summarize the attached PDF into a 45-second pitch video using `/hyperframes`.
-
-> Read this changelog and turn the top three changes into a 30-second release announcement video using `/hyperframes`.
-
-> Turn this CSV into an animated bar chart race using `/hyperframes`.
-
-Warm-start prompts produce richer, more grounded videos because the agent is writing about *something specific* instead of inventing copy.
-
-## Iterating
-
-Hyperframes is a conversation. After the first render, talk to the agent the way you'd talk to a video editor — don't re-prompt from scratch:
-
-> Make the title 2x bigger.
-
-> Swap to dark mode.
-
-> Add a fade-out at the end and a lower third at 0:03 with my name and title.
-
-> The captions are too small and they overlap the lower third. Move them up and shrink them.
-
-> Replace the background music with `assets/track.mp3`.
-
-The agent already has the composition open and the skills loaded — small targeted edits produce better results than long re-specifications.
-
-## Vocabulary that changes output
-
-The skills map natural-language adjectives to specific framework settings. Using the right word gets you the right result without specifying technical details.
-
-### Motion & easing
-
-Describe how motion should *feel* and the agent picks the matching GSAP ease:
-
-| Say this | Agent uses    | Feels like              |
-| -------- | ------------- | ----------------------- |
-| smooth   | `power2.out`  | Natural deceleration    |
-| snappy   | `power4.out`  | Quick and decisive      |
-| bouncy   | `back.out`    | Overshoots then settles |
-| springy  | `elastic.out` | Oscillates into place   |
-| dramatic | `expo.out`    | Fast start, long glide  |
-| dreamy   | `sine.inOut`  | Slow, symmetrical       |
-
-**Timing shorthand:** fast (0.2s) = energy, medium (0.4s) = professional, slow (0.6s) = luxury, very slow (1–2s) = cinematic.
-
-### Caption tones
-
-Describe the *energy* of your captions and the agent picks matching typography, size, and animation:
-
-| Tone         | Typography         | Animation    | Size range |
-| ------------ | ------------------ | ------------ | ---------- |
-| Hype         | Heavy weight fonts | Scale-pop    | 72–96px    |
-| Corporate    | Clean sans-serif   | Fade + slide | 56–72px    |
-| Tutorial     | Monospace          | Typewriter   | 48–64px    |
-| Storytelling | Serif              | Slow fade    | 44–56px    |
-| Social       | Rounded, playful   | Bounce       | 56–80px    |
-
-```
-"Hype-style captions with scale-pop"
-"Calm, elegant subtitles with slow fades"
-"Karaoke-style word highlighting"
-```
-
-Per-word styling also works:
-
-```
-"Make brand names larger with accent color"
-"Add bounce to emotional keywords"
-"Highlight numbers differently"
-```
-
-### Transitions
-
-Every multi-scene composition benefits from transitions. Describe the energy level:
-
-| Energy | CSS option     | Shader option       |
-| ------ | -------------- | ------------------- |
-| Calm   | Blur crossfade | Cross-warp morph    |
-| Medium | Push slide     | Whip pan            |
-| High   | Zoom through   | Glitch, ridged burn |
-
-Or describe by mood:
-
-```
-"Warm transitions for this wellness brand"
-"Cold, clinical transitions for tech"
-"Playful bouncy transitions"
-"Dramatic zoom for the reveal"
-```
-
-### Audio-reactive animation
-
-Map audio frequency bands to visual properties. The agent uses these defaults:
-
-| Audio band | Maps to   | Visual effect     |
-| ---------- | --------- | ----------------- |
-| Bass       | `scale`   | Pulse on the beat |
-| Treble     | `glow`    | Shimmer intensity |
-| Amplitude  | `opacity` | Breathing         |
-| Mids       | `shape`   | Morphing          |
-
-```
-"Make the text pulse with the beat"
-"Add bass-driven scale to the logo"
-"Create glow that responds to treble"
-```
+| 슬래시 명령어      | 로드되는 내용                                                               |
+| ------------------ | --------------------------------------------------------------------------- |
+| `/hyperframes`     | 컴포지션 작성 — HTML 구조, 타이밍, 캡션, TTS, 트랜지션                      |
+| `/hyperframes-cli` | CLI 명령 — `init`, `lint`, `preview`, `render`, `transcribe`, `tts`        |
+| `/gsap`            | GSAP 애니메이션 API — 타임라인, 이징, ScrollTrigger, 플러그인              |
 
 <Tip>
-  Keep audio-reactive effects subtle for text (3–6% intensity). Go bigger for backgrounds (10–30%).
+  Hyperframes 관련 프롬프트는 항상 `/hyperframes`를 접두사로 붙이세요(Claude가 아닌 에이전트에서는 다른 방식으로 skill을 호출). 그러면 skill 컨텍스트가 명시적으로 로드되어, 에이전트가 웹 비디오에 대해 기억하는 것에 의존하지 않고 처음부터 컴포지션 규칙을 제대로 지키게 됩니다.
 </Tip>
 
-### Marker highlights
+## 두 가지 프롬프트 형식
 
-Hand-drawn emphasis effects for text:
+성공적인 Hyperframes 프롬프트는 대부분 두 가지 형식 중 하나에 해당합니다.
 
-| Mode        | Effect             | Best for     |
-| ----------- | ------------------ | ------------ |
-| `highlight` | Marker sweep       | Key phrases  |
-| `circle`    | Hand-drawn ellipse | Single words |
-| `burst`     | Radiating lines    | Hype moments |
-| `scribble`  | Chaotic scratch    | Crossing out |
-| `sketchout` | Rectangle outline  | Callouts     |
+### 콜드 스타트 — 비디오를 묘사하기
+
+에이전트에게 원하는 것을 처음부터 설명합니다. 크리에이티브 방향이 머릿속에 있는 신규 작업에 가장 적합합니다.
+
+> `/hyperframes`를 사용해서 어두운 배경 위에 페이드인 타이틀과 은은한 배경 음악이 있는 10초짜리 제품 인트로를 만들어줘.
+
+> `/hyperframes`로 \[주제]에 대한 9:16 틱톡 스타일 훅 영상을 만들어줘. TTS 내레이션에 맞춘 통통 튀는 캡션을 포함해서.
+
+콜드 스타트 프롬프트는 다음을 명시할 때 가장 잘 작동합니다:
+
+* **길이** (예: "10초", "30s", "3초짜리 장면 5개")
+* **화면비** ("16:9", "9:16 세로", "1:1 정사각") — 지정하지 않으면 기본값은 1920x1080
+* **무드 / 스타일** ("미니멀한 스위스 그리드", "따뜻한 그레인의 아날로그", "에너지 넘치는 소셜")
+* **핵심 요소** (타이틀, 로워 서드, 캡션, 배경 비디오, 음악)
+
+### 웜 스타트 — 컨텍스트를 비디오로 바꾸기
+
+에이전트에게 작업할 재료 — URL, 문서, CSV, 대본 — 를 주고 그것을 비디오로 합성하도록 요청합니다. Hyperframes가 빛을 발하는 지점입니다. 에이전트가 조사/요약 단계 *와* 프로덕션 단계를 하나의 흐름으로 처리하기 때문입니다.
+
+> 이 GitHub 저장소 [https://github.com/heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)를 살펴보고 `/hyperframes`로 용도와 아키텍처를 설명해줘.
+
+> `/hyperframes`로 첨부된 PDF를 45초짜리 피치 비디오로 요약해줘.
+
+> 이 체인지로그를 읽고 상위 세 가지 변경사항을 `/hyperframes`로 30초짜리 릴리즈 공지 영상으로 만들어줘.
+
+> 이 CSV를 `/hyperframes`로 애니메이션 바 차트 레이스로 변환해줘.
+
+웜 스타트 프롬프트는 더 풍부하고 근거 있는 비디오를 만듭니다. 에이전트가 카피를 창작하는 대신 *구체적인 무언가*에 대해 글을 쓰기 때문입니다.
+
+## 반복하기
+
+Hyperframes는 대화입니다. 첫 렌더 후에는 비디오 편집자에게 말하듯 에이전트와 이야기하세요 — 처음부터 다시 프롬프트하지 마세요:
+
+> 타이틀을 2배 크게 만들어줘.
+
+> 다크 모드로 바꿔줘.
+
+> 끝에 페이드아웃을 추가하고 0:03 지점에 내 이름과 직함이 들어간 로워 서드를 넣어줘.
+
+> 캡션이 너무 작고 로워 서드와 겹쳐. 위로 옮기고 크기를 줄여줘.
+
+> 배경 음악을 `assets/track.mp3`로 교체해줘.
+
+에이전트는 이미 컴포지션을 열어두고 skills도 로드한 상태입니다 — 긴 재사양보다는 작고 타겟팅된 수정이 더 좋은 결과를 냅니다.
+
+## 결과를 바꾸는 어휘
+
+Skills는 자연어 형용사를 구체적인 프레임워크 설정으로 매핑합니다. 올바른 단어를 쓰면 기술적 세부사항을 지정하지 않아도 원하는 결과를 얻을 수 있습니다.
+
+### 움직임과 이징
+
+움직임이 어떻게 *느껴져야* 하는지 묘사하면 에이전트가 맞는 GSAP 이즈를 선택합니다:
+
+| 이렇게 말하면 | 에이전트 사용값 | 느낌                     |
+| ------------- | --------------- | ------------------------ |
+| 부드럽게      | `power2.out`    | 자연스러운 감속          |
+| 스냅있게      | `power4.out`    | 빠르고 단호하게          |
+| 바운시하게    | `back.out`      | 살짝 튀었다가 자리잡음   |
+| 스프링처럼    | `elastic.out`   | 진동하며 자리잡음        |
+| 드라마틱하게  | `expo.out`      | 빠르게 시작, 긴 활공     |
+| 몽환적으로    | `sine.inOut`    | 느리고 대칭적            |
+
+**타이밍 약어:** fast (0.2s) = 에너지, medium (0.4s) = 전문적, slow (0.6s) = 럭셔리, very slow (1–2s) = 시네마틱.
+
+### 캡션 톤
+
+캡션의 *에너지*를 묘사하면 에이전트가 매칭되는 타이포그래피, 크기, 애니메이션을 선택합니다:
+
+| 톤            | 타이포그래피         | 애니메이션      | 크기 범위  |
+| ------------- | -------------------- | --------------- | ---------- |
+| 하이프        | 두꺼운 서체          | 스케일 팝       | 72–96px    |
+| 코퍼레이트    | 깔끔한 산세리프      | 페이드 + 슬라이드 | 56–72px    |
+| 튜토리얼      | 모노스페이스         | 타자기 효과     | 48–64px    |
+| 스토리텔링    | 세리프               | 느린 페이드     | 44–56px    |
+| 소셜          | 둥글고 재미있는      | 바운스          | 56–80px    |
 
 ```
-"Add a marker highlight sweep on 'revolutionary'"
-"Circle this keyword with hand-drawn effect"
-"Add burst lines around 'AMAZING'"
+"스케일 팝이 들어간 하이프 스타일 캡션"
+"느린 페이드가 있는 차분하고 우아한 자막"
+"노래방 스타일 단어 하이라이트"
 ```
 
-### Text-to-speech voices
-
-TTS runs locally via Kokoro (no API key needed). Describe the content and the agent picks a voice, or request one directly:
-
-| Content type | Recommended voices     |
-| ------------ | ---------------------- |
-| Product demo | `af_heart`, `af_nova`  |
-| Tutorial     | `am_adam`, `bf_emma`   |
-| Marketing    | `af_sky`, `am_michael` |
+단어별 스타일링도 됩니다:
 
 ```
-"Generate narration for this script"
-"Create voiceover with a professional female voice"
-"Add TTS with British male voice at 1.1x speed"
+"브랜드 이름은 강조 색으로 더 크게"
+"감정적 키워드에는 바운스 추가"
+"숫자는 다르게 강조"
 ```
 
-### Rendering quality
+### 트랜지션
 
-| Quality    | Use for             |
+여러 장면의 컴포지션은 트랜지션의 덕을 봅니다. 에너지 레벨을 묘사하세요:
+
+| 에너지 | CSS 옵션        | 셰이더 옵션           |
+| ------ | --------------- | --------------------- |
+| 차분함 | 블러 크로스페이드 | 크로스 워프 모핑      |
+| 중간   | 푸시 슬라이드   | 휩 팬                 |
+| 강함   | 줌 스루         | 글리치, 리지드 번     |
+
+무드로 묘사해도 됩니다:
+
+```
+"이 웰니스 브랜드에는 따뜻한 트랜지션"
+"테크용 차갑고 클리니컬한 트랜지션"
+"장난기 있는 바운시 트랜지션"
+"리빌용 드라마틱 줌"
+```
+
+### 오디오 반응 애니메이션
+
+오디오 주파수 대역을 시각적 속성에 매핑합니다. 에이전트는 다음 기본값을 사용합니다:
+
+| 오디오 대역 | 매핑        | 시각 효과          |
+| ----------- | ----------- | ------------------ |
+| Bass        | `scale`     | 비트에 맞춰 펄스   |
+| Treble      | `glow`      | 반짝임 강도        |
+| Amplitude   | `opacity`   | 숨쉬기             |
+| Mids        | `shape`     | 모핑               |
+
+```
+"비트에 맞춰 텍스트를 펄스하게 해줘"
+"로고에 베이스 기반 스케일 추가"
+"트레블에 반응하는 글로우 만들어줘"
+```
+
+<Tip>
+  텍스트에 적용하는 오디오 반응 효과는 은은하게 유지하세요(강도 3–6%). 배경은 더 크게(10–30%).
+</Tip>
+
+### 마커 하이라이트
+
+텍스트에 손으로 그린 듯한 강조 효과:
+
+| 모드        | 효과                | 적합한 용도        |
+| ----------- | ------------------- | ------------------ |
+| `highlight` | 마커 스윕           | 핵심 구절          |
+| `circle`    | 손그림 타원         | 단일 단어          |
+| `burst`     | 방사형 선           | 하이프 모먼트      |
+| `scribble`  | 혼란스러운 낙서     | 줄 그어 지우기     |
+| `sketchout` | 사각형 아웃라인     | 콜아웃             |
+
+```
+"'revolutionary'에 마커 하이라이트 스윕 추가"
+"이 키워드를 손그림 스타일로 동그라미 쳐줘"
+"'AMAZING' 주위에 버스트 라인 추가"
+```
+
+### 텍스트 음성 변환 보이스
+
+TTS는 Kokoro를 통해 로컬에서 실행됩니다(API 키 불필요). 콘텐츠를 묘사하면 에이전트가 보이스를 선택하거나, 직접 요청해도 됩니다:
+
+| 콘텐츠 유형 | 추천 보이스              |
+| ----------- | ------------------------ |
+| 제품 데모   | `af_heart`, `af_nova`    |
+| 튜토리얼    | `am_adam`, `bf_emma`     |
+| 마케팅      | `af_sky`, `am_michael`   |
+
+```
+"이 스크립트로 내레이션 생성해줘"
+"전문적인 여성 목소리로 보이스오버 만들어줘"
+"영국 남성 목소리 1.1배속으로 TTS 추가"
+```
+
+### 렌더링 품질
+
+| 품질       | 용도                |
 | ---------- | ------------------- |
-| `draft`    | Fast iteration      |
-| `standard` | Review and feedback |
-| `high`     | Final delivery      |
+| `draft`    | 빠른 반복           |
+| `standard` | 리뷰 및 피드백      |
+| `high`     | 최종 납품           |
 
 ```
-"Quick draft render"
-"Render at high quality"
-"Export as transparent WebM"
+"빠른 드래프트 렌더"
+"high 품질로 렌더"
+"투명 WebM으로 내보내기"
 ```
 
-## Rules to know
+## 알아둬야 할 규칙
 
-The skills enforce these automatically, but if you hand-edit compositions or debug issues, these are the rules that matter:
+Skills가 이것들을 자동으로 강제하지만, 컴포지션을 직접 편집하거나 이슈를 디버깅한다면 중요한 규칙들입니다:
 
-1. **Register all timelines** on `window.__timelines` — the renderer can't seek animations it doesn't know about.
-2. **Video elements must be `muted`** — audio goes in separate `&lt;audio&gt;` elements so the renderer can mix it.
-3. **No `Math.random()`** — random values produce different frames on each render, breaking determinism. Use a seeded PRNG (e.g. mulberry32) if you need pseudo-random values.
-4. **Synchronous timeline construction** — no `async`/`await` or `fetch()` during GSAP timeline setup.
-5. **Timed elements need `class="clip"`** — plus `data-start`, `data-duration`, and `data-track-index`.
-6. **Add entrance animations to every scene** — elements appearing without animation feel broken on video.
-7. **Add transitions between scenes** — jump cuts between scenes are almost always unintentional in composed video.
+1. **모든 타임라인을 등록하세요** — `window.__timelines`에. 렌더러는 자신이 모르는 애니메이션은 시킹할 수 없습니다.
+2. **비디오 요소는 반드시 `muted`여야 합니다** — 오디오는 별도의 `&lt;audio&gt;` 요소에 들어가야 렌더러가 믹싱할 수 있습니다.
+3. **`Math.random()` 사용 금지** — 랜덤값은 렌더마다 다른 프레임을 만들어 결정론성을 깨뜨립니다. 의사난수가 필요하면 시드된 PRNG(예: mulberry32)를 사용하세요.
+4. **동기적 타임라인 구성** — GSAP 타임라인 설정 중에는 `async`/`await`나 `fetch()`를 쓰지 마세요.
+5. **타이밍이 있는 요소에는 `class="clip"`이 필요합니다** — 추가로 `data-start`, `data-duration`, `data-track-index`도 필요.
+6. **모든 장면에 등장 애니메이션을 추가하세요** — 애니메이션 없이 등장하는 요소는 영상에서 부자연스럽게 보입니다.
+7. **장면 사이에 트랜지션을 추가하세요** — 합성된 비디오에서 장면 간의 점프 컷은 거의 항상 의도하지 않은 것입니다.
 
 <Warning>
-  Rules 1–5 are technical requirements — breaking them produces incorrect renders. Rules 6–7 are best practices that the skills apply by default. You can override them when you have a reason to.
+  1~5번 규칙은 기술적 요구사항입니다 — 어기면 잘못된 렌더가 만들어집니다. 6~7번은 Skills가 기본으로 적용하는 베스트 프랙티스입니다. 이유가 있다면 오버라이드할 수 있습니다.
 </Warning>
 
-## Anti-patterns
+## 안티 패턴
 
-Things that cause friction (or wrong output):
+마찰(혹은 잘못된 결과)을 일으키는 것들:
 
-* **Don't ask for React / Vue components.** Hyperframes compositions are plain HTML with `data-*` attributes and a GSAP timeline. Asking for "a React component for the intro" forces the agent to translate later.
-* **Don't ask for 4K or 60fps unless you need it.** Defaults (1920×1080, 30fps) render fast and look great. Higher specs slow rendering meaningfully.
-* **Don't skip the slash command.** Without `/hyperframes`, the agent may guess at HTML video conventions instead of using the framework's actual rules (`class="clip"` on timed elements, `window.__timelines` registration, etc.).
-* **Don't paste long error logs into the prompt without context.** Run `npx hyperframes lint` and `npx hyperframes validate` first — lint catches structural issues, validate catches runtime errors (JS exceptions, missing assets, contrast problems).
-* **Don't assume the agent knows your assets.** Mention file paths explicitly (`assets/intro.mp4`, `assets/logo.png`) — the agent will check what's there but a hint speeds it up.
+* **React / Vue 컴포넌트를 요청하지 마세요.** Hyperframes 컴포지션은 `data-*` 속성이 붙은 평범한 HTML과 GSAP 타임라인입니다. "인트로용 React 컴포넌트"를 요청하면 나중에 에이전트가 변환해야 합니다.
+* **필요하지 않다면 4K나 60fps를 요청하지 마세요.** 기본값(1920×1080, 30fps)이 빠르게 렌더되고 결과도 훌륭합니다. 더 높은 사양은 렌더링을 유의미하게 느리게 만듭니다.
+* **슬래시 명령을 건너뛰지 마세요.** `/hyperframes` 없이는 에이전트가 프레임워크의 실제 규칙(타이밍 요소의 `class="clip"`, `window.__timelines` 등록 등) 대신 HTML 비디오 관습을 짐작할 수 있습니다.
+* **컨텍스트 없이 긴 에러 로그를 프롬프트에 붙여넣지 마세요.** 먼저 `npx hyperframes lint`와 `npx hyperframes validate`를 실행하세요 — lint는 구조적 이슈를, validate는 런타임 에러(JS 예외, 누락된 에셋, 대비 문제)를 잡아냅니다.
+* **에이전트가 당신의 에셋을 안다고 가정하지 마세요.** 파일 경로를 명시적으로 언급하세요(`assets/intro.mp4`, `assets/logo.png`) — 에이전트가 무엇이 있는지 확인하긴 하지만, 힌트가 있으면 속도가 빨라집니다.
 
-## Recommended workflow
+## 추천 워크플로우
 
-1. `npx hyperframes init my-video` — scaffold a project (skills install automatically)
-2. Open the project in Claude Code (or Cursor / Codex)
-3. Prompt with `/hyperframes` and one of the shapes above
-4. `npx hyperframes preview` — watch in the browser as the agent edits
-5. Iterate with small targeted prompts
-6. `npx hyperframes render --output final.mp4` when you're happy
+1. `npx hyperframes init my-video` — 프로젝트 스캐폴드 (skills 자동 설치)
+2. Claude Code(또는 Cursor / Codex)에서 프로젝트 열기
+3. `/hyperframes`와 위의 두 형식 중 하나로 프롬프트
+4. `npx hyperframes preview` — 에이전트가 편집하는 동안 브라우저에서 확인
+5. 작고 타겟팅된 프롬프트로 반복
+6. 만족스러우면 `npx hyperframes render --output final.mp4`
 
-## Next steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Quickstart" icon="rocket" href="/quickstart">
-    Build and render your first video
+  <Card title="퀵스타트" icon="rocket" href="/quickstart">
+    첫 비디오를 만들고 렌더링합니다
   </Card>
 
-  <Card title="Common Mistakes" icon="circle-exclamation" href="/guides/common-mistakes">
-    Pitfalls the linter can't catch
+  <Card title="흔한 실수" icon="circle-exclamation" href="/guides/common-mistakes">
+    린터가 잡을 수 없는 함정들
   </Card>
 
-  <Card title="GSAP Animation" icon="wand-magic-sparkles" href="/guides/gsap-animation">
-    Add fade, slide, scale, and custom animations
+  <Card title="GSAP 애니메이션" icon="wand-magic-sparkles" href="/guides/gsap-animation">
+    페이드, 슬라이드, 스케일 및 커스텀 애니메이션 추가
   </Card>
 
-  <Card title="Catalog" icon="grid-2" href="/catalog/blocks/data-chart">
-    50+ ready-to-use blocks and components
+  <Card title="카탈로그" icon="grid-2" href="/catalog/blocks/data-chart">
+    바로 쓸 수 있는 50개 이상의 블록과 컴포넌트
   </Card>
 </CardGroup>
