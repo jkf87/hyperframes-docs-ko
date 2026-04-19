@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { generatedNav, generatedSidebar } from './generated-nav'
 
 export default defineConfig({
   title: 'HyperFrames 한국어 문서',
@@ -12,19 +13,8 @@ export default defineConfig({
     ['meta', { name: 'robots', content: 'index, follow' }],
   ],
   themeConfig: {
-    nav: [
-      { text: '홈', link: '/' },
-      { text: 'Quickstart', link: '/quickstart' },
-    ],
-    sidebar: [
-      {
-        text: '시작하기',
-        items: [
-          { text: '홈', link: '/' },
-          { text: 'Quickstart', link: '/quickstart' },
-        ],
-      },
-    ],
+    nav: generatedNav,
+    sidebar: generatedSidebar,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/jkf87/hyperframes-docs-ko' },
     ],

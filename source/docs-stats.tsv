@@ -1,0 +1,66 @@
+section	slug	title	chars	words
+catalog	catalog/blocks/app-showcase	App Showcase	1508	150
+catalog	catalog/blocks/chromatic-radial-split	Chromatic Radial Split	1614	147
+catalog	catalog/blocks/cinematic-zoom	Cinematic Zoom	1480	143
+catalog	catalog/blocks/cross-warp-morph	Cross Warp Morph	1512	143
+catalog	catalog/blocks/data-chart	Data Chart	1527	158
+catalog	catalog/blocks/domain-warp-dissolve	Domain Warp Dissolve	1578	147
+catalog	catalog/blocks/flash-through-white	Flash Through White	1551	145
+catalog	catalog/blocks/flowchart	Flowchart	1556	156
+catalog	catalog/blocks/glitch	Glitch	1388	141
+catalog	catalog/blocks/gravitational-lens	Gravitational Lens	1560	143
+catalog	catalog/blocks/instagram-follow	Instagram Follow	1666	159
+catalog	catalog/blocks/light-leak	Light Leak	1448	145
+catalog	catalog/blocks/logo-outro	Logo Outro	1536	158
+catalog	catalog/blocks/macos-notification	macOS Notification	1594	150
+catalog	catalog/blocks/reddit-post	Reddit Post Card	1493	152
+catalog	catalog/blocks/ridged-burn	Ridged Burn	1463	145
+catalog	catalog/blocks/ripple-waves	Ripple Waves	1484	145
+catalog	catalog/blocks/sdf-iris	SDF Iris	1432	147
+catalog	catalog/blocks/spotify-card	Spotify Now Playing	1523	154
+catalog	catalog/blocks/swirl-vortex	Swirl Vortex	1470	143
+catalog	catalog/blocks/thermal-distortion	Thermal Distortion	1552	145
+catalog	catalog/blocks/tiktok-follow	TikTok Follow	1612	159
+catalog	catalog/blocks/transitions-3d	3D Transitions	1509	147
+catalog	catalog/blocks/transitions-blur	Blur Transitions	1525	143
+catalog	catalog/blocks/transitions-cover	Cover Transitions	1526	141
+catalog	catalog/blocks/transitions-destruction	Destruction Transitions	1612	141
+catalog	catalog/blocks/transitions-dissolve	Dissolve Transitions	1561	143
+catalog	catalog/blocks/transitions-distortion	Distortion Transitions	1591	143
+catalog	catalog/blocks/transitions-grid	Grid Transitions	1505	141
+catalog	catalog/blocks/transitions-light	Light Transitions	1540	145
+catalog	catalog/blocks/transitions-mechanical	Mechanical Transitions	1607	145
+catalog	catalog/blocks/transitions-other	Other Transitions	1532	141
+catalog	catalog/blocks/transitions-push	Push Transitions	1503	143
+catalog	catalog/blocks/transitions-radial	Radial Transitions	1545	145
+catalog	catalog/blocks/transitions-scale	Scale Transitions	1516	143
+catalog	catalog/blocks/ui-3d-reveal	3D UI Reveal	1470	148
+catalog	catalog/blocks/whip-pan	Whip Pan	1422	147
+catalog	catalog/blocks/x-post	X Post Card	1431	150
+catalog	catalog/blocks/yt-lower-third	YouTube Lower Third	1640	161
+catalog	catalog/components/grain-overlay	Grain Overlay	1465	156
+catalog	catalog/components/grid-pixelate-wipe	Grid Pixelate Wipe	1558	166
+catalog	catalog/components/shimmer-sweep	Shimmer Sweep	1476	162
+concepts	concepts/compositions	Compositions	6002	640
+concepts	concepts/data-attributes	Data Attributes	5923	662
+concepts	concepts/determinism	Deterministic Rendering	5273	665
+concepts	concepts/frame-adapters	Frame Adapters	5138	621
+contributing	contributing/testing-local-changes	Testing Local CLI Changes	4810	677
+guides	guides/common-mistakes	Common Mistakes	10566	1202
+guides	guides/gsap-animation	GSAP Animation	6236	742
+guides	guides/performance	Performance	5477	807
+guides	guides/prompting	Prompt Guide	11637	1709
+guides	guides/rendering	Rendering	15063	1921
+guides	guides/troubleshooting	Troubleshooting	8134	939
+guides	guides/website-to-video	Website to Video	10524	1304
+packages	packages/cli	CLI	32460	3868
+packages	packages/core	@hyperframes/core	13118	1370
+packages	packages/engine	@hyperframes/engine	12163	1528
+packages	packages/player	@hyperframes/player	8681	1016
+packages	packages/producer	@hyperframes/producer	11872	1459
+packages	packages/studio	@hyperframes/studio	8843	1177
+reference	reference/html-schema	HTML Schema Reference	11381	1317
+root	contributing	Contributing	5243	647
+root	examples	Examples	12344	1070
+root	introduction	Introduction	5578	686
+root	quickstart	Quickstart	8978	1075

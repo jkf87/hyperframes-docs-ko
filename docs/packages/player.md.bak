@@ -1,0 +1,236 @@
+# @hyperframes/player
+
+> 모든 웹 페이지에 HyperFrames 컴포지션을 재생할 수 있는 임베드 가능한 웹 컴포넌트입니다.
+
+player 패키지는 HyperFrames 컴포지션을 어디서든 임베드할 수 있는 `<hyperframes-player>` 커스텀 엘리먼트를 제공합니다. 프레임워크에 관계없이, 순수 HTML에서도 사용 가능합니다. 의존성 없이 gzip 기준 3KB입니다.
+
+```bash theme={null}
+npm install @hyperframes/player
+```
+
+## 사용 시기
+
+**다음과 같은 경우 `@hyperframes/player`를 사용하세요:**
+
+* 웹사이트, 대시보드 또는 앱에 렌더링된 컴포지션을 임베드할 때
+* 랜딩 페이지나 제품 데모에 비디오와 유사한 플레이어를 추가할 때
+* 문서나 블로그 게시물에 컴포지션을 보여줄 때
+
+**다음의 경우에는 다른 패키지를 사용하세요:**
+
+* 컴포지션을 대화형으로 편집하려면 — [studio](/packages/studio)를 사용하세요
+* 개발 중 미리보기를 하려면 — [CLI](/packages/cli)를 사용하세요 (`npx hyperframes preview`)
+* MP4로 렌더링하려면 — [CLI](/packages/cli) 또는 [producer](/packages/producer)를 사용하세요
+
+## 빠른 시작
+
+### CDN 방식
+
+```html theme={null}
+<script src="https://cdn.jsdelivr.net/npm/@hyperframes/player"></script>
+
+<hyperframes-player
+  src="./my-composition/index.html"
+  controls
+  autoplay
+  muted
+  style="width: 100%; max-width: 800px; aspect-ratio: 16/9"
+></hyperframes-player>
+```
+
+### npm 방식
+
+```js theme={null}
+import '@hyperframes/player';
+```
+
+```html theme={null}
+<hyperframes-player src="/compositions/intro.html" controls></hyperframes-player>
+```
+
+## HTML 속성
+
+| 속성              | 타입      | 기본값     | 설명                                                  |
+| --------------- | ------- | ------- | --------------------------------------------------- |
+| `src`           | string  | 필수      | 컴포지션 HTML의 URL 또는 상대 경로                              |
+| `width`         | number  | 1920    | 컴포지션 너비(픽셀)                                          |
+| `height`        | number  | 1080    | 컴포지션 높이(픽셀)                                          |
+| `controls`      | boolean | false   | 재생 컨트롤 오버레이 표시                                       |
+| `autoplay`      | boolean | false   | 로드 시 자동 재생                                           |
+| `loop`          | boolean | false   | 반복 재생                                                |
+| `muted`         | boolean | true    | 오디오 음소거 (대부분의 브라우저에서 자동 재생에 필수)                      |
+| `poster`        | string  | —       | 첫 재생 전에 표시할 이미지 URL                                  |
+| `playback-rate` | number  | 1       | 재생 속도 배율                                              |
+
+## JavaScript API
+
+플레이어는 네이티브 `<video>` 엘리먼트 API를 미러링합니다:
+
+```js theme={null}
+const player = document.querySelector('hyperframes-player');
+
+// 재생
+player.play();
+player.pause();
+player.seek(2.5); // 2.5초 지점으로 이동
+
+// 속성
+player.currentTime;     // number — 현재 위치(초)
+player.currentTime = 5; // 5초 지점으로 이동
+player.duration;        // number — 전체 재생 시간
+player.paused;          // boolean
+player.ready;           // boolean — 컴포지션 로드 완료 후 true
+player.playbackRate;    // number — 속도 가져오기/설정
+player.muted;           // boolean — 음소거 가져오기/설정
+player.loop;            // boolean — 반복 가져오기/설정
+```
+
+## 이벤트
+
+```js theme={null}
+const player = document.querySelector('hyperframes-player');
+
+player.addEventListener('ready', (e) => {
+  console.log('Duration:', e.detail.duration);
+});
+
+player.addEventListener('timeupdate', (e) => {
+  console.log('Time:', e.detail.currentTime);
+});
+
+player.addEventListener('play', () => console.log('Playing'));
+player.addEventListener('pause', () => console.log('Paused'));
+player.addEventListener('ended', () => console.log('Ended'));
+player.addEventListener('error', (e) => console.error(e.detail.message));
+```
+
+| 이벤트           | Detail            | 설명                           |
+| ------------ | ----------------- | ---------------------------- |
+| `ready`      | `{ duration }`    | 컴포지션이 로드되고 타임라인이 검색됨          |
+| `timeupdate` | `{ currentTime }` | 재생 중 발생 (\~30fps)            |
+| `play`       | —                 | 재생 시작                        |
+| `pause`      | —                 | 재생 일시정지                      |
+| `ended`      | —                 | 재생이 끝에 도달                    |
+| `error`      | `{ message }`     | 로드 또는 런타임 오류                 |
+
+## 프레임워크 예제
+
+### React
+
+```jsx theme={null}
+import '@hyperframes/player';
+
+function VideoPreview({ src }) {
+  return (
+    <hyperframes-player
+      src={src}
+      controls
+      style={{ width: '100%', maxWidth: 800 }}
+    />
+  );
+}
+```
+
+### Vue
+
+```vue theme={null}
+<template>
+  <hyperframes-player :src="compositionUrl" controls />
+</template>
+
+<script setup>
+import '@hyperframes/player';
+const compositionUrl = './compositions/intro.html';
+</script>
+```
+
+### 프로그래밍 방식
+
+```js theme={null}
+import '@hyperframes/player';
+
+const player = document.createElement('hyperframes-player');
+player.src = './my-composition/index.html';
+player.controls = true;
+player.addEventListener('ready', () => player.play());
+document.getElementById('player-container').appendChild(player);
+```
+
+## 고급: iframe 접근
+
+컴포지션은 플레이어의 Shadow DOM 내부에 있는 샌드박스된 `<iframe>` 안에서 실행됩니다. 대부분의 경우 직접 접근할 필요가 없으며, 위의 JavaScript API와 이벤트만으로 충분합니다. 하지만 에디터, 레코더 또는 플레이어 위에 커스텀 타임라인을 구축하는 경우에는 컴포지션의 DOM을 검사하거나 `__player` / `__timelines` 런타임 객체를 읽어야 할 수 있습니다. `iframeElement` getter는 이러한 소비자를 위해 내부 iframe을 노출합니다:
+
+```js theme={null}
+const player = document.querySelector('hyperframes-player');
+const iframe = player.iframeElement;
+
+// 컴포지션의 DOM에 접근
+iframe.contentDocument.querySelectorAll('[data-composition-id]');
+
+// 런타임 읽기 (GSAP 타임라인, 엘리먼트 레지스트리 등)
+iframe.contentWindow.__timelines;
+```
+
+이것은 [`@hyperframes/studio`](/packages/studio)와 같은 에디터 도구에 플레이어를 연결하는 표준 방법입니다. studio는 직접 iframe 참조와 웹 컴포넌트 참조를 모두 처리하는 `resolveIframe` 헬퍼를 내보냅니다:
+
+```ts theme={null}
+import { useTimelinePlayer, resolveIframe } from '@hyperframes/studio';
+
+const { iframeRef } = useTimelinePlayer();
+const player = document.createElement('hyperframes-player');
+player.setAttribute('src', src);
+container.appendChild(player);
+
+// 내부 iframe을 전달하여 useTimelinePlayer가 play/pause/seek를 제어할 수 있도록 합니다.
+iframeRef.current = resolveIframe(player);
+```
+
+### React: 선언적 ref 패턴
+
+명령형 엘리먼트 생성 대신 JSX를 선호한다면, 웹 컴포넌트에 ref를 연결하고 effect 내부에서 iframe을 resolve하세요:
+
+```tsx theme={null}
+import '@hyperframes/player';
+import type { HyperframesPlayer } from '@hyperframes/player';
+import { useTimelinePlayer, resolveIframe } from '@hyperframes/studio';
+
+function StudioPreview({ src }: { src: string }) {
+  const { iframeRef, onIframeLoad } = useTimelinePlayer();
+  const playerRef = useRef<HyperframesPlayer>(null);
+
+  useEffect(() => {
+    iframeRef.current = resolveIframe(playerRef.current);
+  });
+
+  return (
+    <hyperframes-player
+      ref={playerRef}
+      src={src}
+      onLoad={onIframeLoad}
+    />
+  );
+}
+```
+
+<Warning>
+  **주의할 점** — `iframeElement`가 아닌 `<hyperframes-player>` 엘리먼트 자체를 `<iframe>`을 기대하는 훅이나 API에 전달하면, iframe이 플레이어의 Shadow DOM 내부에 있기 때문에 모든 `.contentWindow` / `.contentDocument` 접근이 `null`을 반환합니다. 타임라인 seek, play, pause 및 DOM 검사가 모두 조용히 무시됩니다. **반드시 먼저 `iframeElement`를 추출하거나**, iframe과 웹 컴포넌트 호스트를 모두 투명하게 처리하는 `@hyperframes/studio`의 `resolveIframe`을 사용하세요.
+</Warning>
+
+## 아키텍처
+
+플레이어는 Shadow DOM 컨테이너 내부에서 iframe을 사용합니다. 이를 통해 다음을 제공합니다:
+
+* **격리** — 컴포지션의 CSS/JS가 페이지로 누출되거나 충돌하지 않습니다
+* **보안** — iframe 샌드박스가 컴포지션의 기능을 제한합니다
+* **스케일링** — CSS transform을 통해 컴포지션을 플레이어 컨테이너에 맞게 자동 조정합니다
+
+플레이어는 HyperFrames 런타임 브리지 프로토콜(`postMessage`)을 통해 컴포지션과 통신합니다. 기존 컴포지션은 수정 없이 그대로 작동합니다.
+
+## 컨트롤
+
+`controls` 속성이 있으면 하단에 최소한의 오버레이가 나타납니다:
+
+* **재생/일시정지** 버튼 (왼쪽)
+* 드래그를 지원하는 **스크럽 바** (마우스 + 터치)
+* 현재 / 전체 재생 시간을 보여주는 **시간 표시** (오른쪽)
+* 3초간 비활성 시 자동 숨김, 호버 시 다시 나타남
