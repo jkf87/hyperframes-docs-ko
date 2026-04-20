@@ -52,7 +52,7 @@ npx skills add heygen-com/hyperframes
 
 #### 1. Node.js 22+ 설치
 
-Hyperframes는 Node.js 22 이상이 필요합니다. 현재 버전을 확인하세요.
+HyperFrames는 Node.js 22 이상이 필요합니다. 현재 버전을 확인하세요.
 
 ```bash
 node --version
@@ -130,7 +130,7 @@ my-video/
     └── video.mp4
 ```
 
-| Path | Purpose |
+| 경로 | 용도 |
 | --- | --- |
 | `meta.json` | 프로젝트 메타데이터(이름, ID, 생성일) |
 | `index.html` | 루트 컴포지션, 비디오의 진입점 |
@@ -151,7 +151,7 @@ npx hyperframes init my-video --example warm-grain --video ./intro.mp4
 npx hyperframes preview
 ```
 
-그러면 Hyperframes Studio가 시작되고 브라우저에서 컴포지션이 열립니다. `index.html`을 수정하면 자동으로 다시 로드됩니다.
+그러면 HyperFrames Studio가 시작되고 브라우저에서 컴포지션이 열립니다. `index.html`을 수정하면 자동으로 다시 로드됩니다.
 
 > 개발 서버는 핫 리로드를 지원합니다. HTML 파일을 저장하면 수동 새로고침 없이 미리보기가 즉시 업데이트됩니다.
 
@@ -171,7 +171,7 @@ AI 코딩 에이전트(Claude Code, Cursor 등)로 프로젝트를 열어 작업
       style="font-size: 72px; color: white; text-align: center;
              position: absolute; top: 50%; left: 50%;
              transform: translate(-50%, -50%);">
-    Hello, Hyperframes!
+    안녕하세요, HyperFrames!
   </h1>
 
   <!-- 2. 애니메이션을 위해 GSAP 로드 -->
@@ -211,12 +211,12 @@ npx hyperframes render --output output.mp4
 
 ## 요구 사항 요약
 
-| Dependency | Required | Notes |
+| 의존성 | 필수 여부 | 비고 |
 | --- | --- | --- |
-| **Node.js** 22+ | Yes | CLI와 개발 서버를 위한 런타임 |
-| **npm** or bun | Yes | 패키지 매니저 |
-| **FFmpeg** | Yes | 로컬 렌더링을 위한 비디오 인코딩 |
-| **Docker** | No | 선택 사항, 결정론적이고 재현 가능한 렌더링용 |
+| **Node.js** 22+ | 예 | CLI와 개발 서버를 위한 런타임 |
+| **npm** 또는 bun | 예 | 패키지 매니저 |
+| **FFmpeg** | 예 | 로컬 렌더링을 위한 비디오 인코딩 |
+| **Docker** | 아니요 | 선택 사항, 결정론적이고 재현 가능한 렌더링용 |
 
 ## 다음 단계
 
