@@ -64,10 +64,6 @@ export const generatedSidebar = [
     "text": "가이드",
     "items": [
       {
-        "text": "Claude Design 시작하기",
-        "link": "/guides/claude-design-get-started"
-      },
-      {
         "text": "Common Mistakes",
         "link": "/guides/common-mistakes"
       },
