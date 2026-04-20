@@ -15,6 +15,9 @@ export default defineConfig({
   themeConfig: {
     nav: generatedNav,
     sidebar: generatedSidebar,
+    search: {
+      provider: 'local',
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/jkf87/hyperframes-docs-ko' },
     ],
