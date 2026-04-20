@@ -20,22 +20,22 @@ npx skills add heygen-com/hyperframes
 
 #### 콜드 스타트, 원하는 것을 설명하기
 
-- `Using /hyperframes, create a 10-second product intro with a fade-in title over a dark background and subtle background music.`
+- “`/hyperframes`를 사용해 어두운 배경 위에 페이드인 타이틀과 은은한 배경 음악이 들어간 10초짜리 제품 소개 영상을 만들어줘.”
 
 #### 웜 스타트, 기존 컨텍스트를 비디오로 바꾸기
 
-- `Take a look at this GitHub repo https://github.com/heygen-com/hyperframes and explain its uses and architecture to me using /hyperframes.`
-- `Summarize the attached PDF into a 45-second pitch video using /hyperframes.`
-- `Turn this CSV into an animated bar chart race using /hyperframes.`
+- “`/hyperframes`를 사용해 이 GitHub 저장소 https://github.com/heygen-com/hyperframes 를 살펴보고, 용도와 아키텍처를 설명하는 영상으로 만들어줘.”
+- “`/hyperframes`를 사용해 첨부한 PDF를 45초짜리 피치 영상으로 요약해줘.”
+- “`/hyperframes`를 사용해 이 CSV를 애니메이션 막대 차트 레이스 영상으로 바꿔줘.”
 
 #### 포맷별 요청
 
-- `Make a 9:16 TikTok-style hook video about [topic] using /hyperframes, with bouncy captions synced to a TTS narration.`
+- “`/hyperframes`를 사용해 [주제]에 대한 9:16 틱톡 스타일 훅 영상을 만들고, TTS 내레이션에 맞춰 통통 튀는 자막을 넣어줘.”
 
 #### 반복 수정, 에이전트를 비디오 편집자처럼 대하기
 
-- `Make the title 2x bigger, swap to dark mode, and add a fade-out at the end.`
-- `Add a lower third at 0:03 with my name and title.`
+- `제목을 2배 크게 만들고, 다크 모드로 바꾸고, 마지막에 페이드아웃을 추가해줘.`
+- `0:03 지점에 내 이름과 직함이 들어간 로어 서드를 추가해줘.`
 
 에이전트가 스캐폴딩, 애니메이션, 렌더링을 모두 처리합니다. 더 많은 패턴은 [프롬프팅 가이드](/guides/prompting)를 참고하세요.
 
@@ -115,7 +115,7 @@ cd my-video
 npx hyperframes init my-video --non-interactive --example blank
 ```
 
-사용 가능한 모든 예제는 [Examples](/examples)에서 확인하세요.
+사용 가능한 모든 예제는 [예제](/examples)에서 확인하세요.
 
 생성되는 프로젝트 구조는 다음과 같습니다.
 
