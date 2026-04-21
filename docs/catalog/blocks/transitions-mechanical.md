@@ -2,8 +2,6 @@
 
 > 기계식 셔터 및 아이리스 전환 효과 쇼케이스
 
-# Mechanical Transitions
-
 기계식 셔터 및 아이리스 전환 효과 쇼케이스
 
 `transition` `showcase`

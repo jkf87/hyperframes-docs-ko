@@ -2,8 +2,6 @@
 
 > 아바타와 채널 정보가 포함된 애니메이션 YouTube 구독 하단 자막
 
-# YouTube Lower Third
-
 아바타와 채널 정보가 포함된 애니메이션 YouTube 구독 하단 자막
 
 `social` `overlay` `youtube`

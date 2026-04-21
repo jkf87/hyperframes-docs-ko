@@ -2,8 +2,6 @@
 
 > 프로필 카드와 팔로우 버튼이 있는 애니메이션 TikTok 팔로우 오버레이
 
-# TikTok Follow
-
 프로필 카드와 팔로우 버튼이 있는 애니메이션 TikTok 팔로우 오버레이
 
 `social` `overlay` `tiktok`

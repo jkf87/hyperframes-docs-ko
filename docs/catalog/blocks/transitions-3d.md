@@ -2,8 +2,6 @@
 
 > 3D 원근 플립 및 회전 트랜지션 쇼케이스
 
-# 3D Transitions
-
 3D 원근 플립 및 회전 트랜지션 쇼케이스
 
 `transition` `showcase`

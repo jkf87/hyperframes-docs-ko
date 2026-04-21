@@ -2,8 +2,6 @@
 
 > 화이트 플래시 크로스페이드 셰이더 트랜지션
 
-# Flash Through White
-
 화이트 플래시 크로스페이드 셰이더 트랜지션
 
 `transition` `shader`

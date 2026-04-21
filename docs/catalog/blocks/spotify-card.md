@@ -2,8 +2,6 @@
 
 > 앨범 아트와 프로그레스 바가 있는 애니메이션 Spotify 재생 중 카드
 
-# Spotify Now Playing
-
 앨범 아트와 프로그레스 바가 있는 애니메이션 Spotify 재생 중 카드
 
 `social` `overlay` `spotify`

@@ -2,8 +2,6 @@
 
 > 프로필 카드와 팔로우 버튼이 포함된 애니메이션 Instagram 팔로우 오버레이
 
-# Instagram Follow
-
 프로필 카드와 팔로우 버튼이 포함된 애니메이션 Instagram 팔로우 오버레이
 
 `social` `overlay` `instagram`

@@ -2,8 +2,6 @@
 
 > 릿지 터뷸런스 번 효과를 사용한 셰이더 전환
 
-# Ridged Burn
-
 릿지 터뷸런스 번 효과를 사용한 셰이더 전환
 
 `transition` `shader`

@@ -2,8 +2,6 @@
 
 > 소용돌이 왜곡 효과를 사용한 셰이더 트랜지션
 
-# Swirl Vortex
-
 소용돌이 왜곡 효과를 사용한 셰이더 트랜지션
 
 `transition` `shader`

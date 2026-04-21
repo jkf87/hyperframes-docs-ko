@@ -2,8 +2,6 @@
 
 > 색수차 방사형 분할 셰이더 트랜지션
 
-# Chromatic Radial Split
-
 색수차 방사형 분할 셰이더 트랜지션
 
 `transition` `shader`

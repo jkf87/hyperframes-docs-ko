@@ -2,8 +2,6 @@
 
 > 커버/언커버 슬라이드 전환 쇼케이스
 
-# Cover Transitions
-
 커버/언커버 슬라이드 전환 쇼케이스
 
 `transition` `showcase`

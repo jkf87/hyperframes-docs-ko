@@ -2,8 +2,6 @@
 
 > 열 아지랑이 왜곡 효과를 사용한 셰이더 전환
 
-# Thermal Distortion
-
 열 아지랑이 왜곡 효과를 사용한 셰이더 전환
 
 `transition` `shader`

@@ -2,8 +2,6 @@
 
 > 푸시 및 슬라이드 전환 쇼케이스
 
-# Push Transitions
-
 푸시 및 슬라이드 전환 쇼케이스
 
 `transition` `showcase`

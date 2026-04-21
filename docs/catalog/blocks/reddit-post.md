@@ -2,8 +2,6 @@
 
 > 업보트와 댓글이 포함된 애니메이션 Reddit 게시물 카드 오버레이
 
-# Reddit Post Card
-
 업보트와 댓글이 포함된 애니메이션 Reddit 게시물 카드 오버레이
 
 `social` `overlay` `reddit`

@@ -2,8 +2,6 @@
 
 > SDF(Signed Distance Field) 아이리스 리빌을 사용한 셰이더 트랜지션
 
-# SDF Iris
-
 SDF(Signed Distance Field) 아이리스 리빌을 사용한 셰이더 트랜지션
 
 `transition` `shader`

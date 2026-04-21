@@ -2,8 +2,6 @@
 
 > 방사형 와이프 및 리빌 트랜지션 쇼케이스
 
-# Radial Transitions
-
 방사형 와이프 및 리빌 트랜지션 쇼케이스
 
 `transition` `showcase`

@@ -2,8 +2,6 @@
 
 > 빛 기반 글로우 및 플래시 전환 효과 모음
 
-# Light Transitions
-
 빛 기반 글로우 및 플래시 전환 효과 모음
 
 `transition` `showcase`

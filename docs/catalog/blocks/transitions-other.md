@@ -2,8 +2,6 @@
 
 > 다양한 창의적 트랜지션 쇼케이스
 
-# Other Transitions
-
 다양한 창의적 트랜지션 쇼케이스
 
 `transition` `showcase`

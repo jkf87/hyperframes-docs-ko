@@ -2,8 +2,6 @@
 
 > 스케일 및 줌 전환 효과 모음
 
-# Scale Transitions
-
 스케일 및 줌 전환 효과 모음
 
 `transition` `showcase`

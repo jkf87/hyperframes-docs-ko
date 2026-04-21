@@ -2,8 +2,6 @@
 
 > 디졸브 및 페이드 트랜지션 쇼케이스
 
-# Dissolve Transitions
-
 디졸브 및 페이드 트랜지션 쇼케이스
 
 `transition` `showcase`

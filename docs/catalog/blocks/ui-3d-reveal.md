@@ -2,8 +2,6 @@
 
 > UI 요소를 위한 원근감 있는 3D 등장 애니메이션
 
-# 3D UI Reveal
-
 UI 요소를 위한 원근감 있는 3D 등장 애니메이션
 
 `showcase` `3d` `reveal`

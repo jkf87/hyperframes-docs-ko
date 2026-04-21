@@ -2,8 +2,6 @@
 
 > 그리드 기반 타일 전환 효과 쇼케이스
 
-# Grid Transitions
-
 그리드 기반 타일 전환 효과 쇼케이스
 
 `transition` `showcase`

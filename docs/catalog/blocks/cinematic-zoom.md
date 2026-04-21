@@ -2,8 +2,6 @@
 
 > 극적인 줌 블러가 적용된 셰이더 전환 효과
 
-# Cinematic Zoom
-
 극적인 줌 블러가 적용된 셰이더 전환 효과
 
 `transition` `shader`

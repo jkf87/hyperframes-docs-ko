@@ -2,8 +2,6 @@
 
 > 장면 간 블러 기반 트랜지션 쇼케이스
 
-# Blur Transitions
-
 장면 간 블러 기반 트랜지션 쇼케이스
 
 `transition` `showcase`

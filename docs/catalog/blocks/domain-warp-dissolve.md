@@ -2,8 +2,6 @@
 
 > 프랙탈 노이즈 도메인 워핑 셰이더 트랜지션
 
-# Domain Warp Dissolve
-
 프랙탈 노이즈 도메인 워핑 셰이더 트랜지션
 
 `transition` `shader`

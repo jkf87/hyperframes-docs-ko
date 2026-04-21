@@ -2,8 +2,6 @@
 
 > 워프 및 왜곡 전환 쇼케이스
 
-# Distortion Transitions
-
 워프 및 왜곡 전환 쇼케이스
 
 `transition` `showcase`

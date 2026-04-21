@@ -2,8 +2,6 @@
 
 > 파괴적인 분해 전환 효과 모음
 
-# Destruction Transitions
-
 파괴적인 분해 전환 효과 모음
 
 `transition` `showcase`

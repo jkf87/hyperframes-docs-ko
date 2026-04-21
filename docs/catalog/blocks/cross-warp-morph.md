@@ -2,8 +2,6 @@
 
 > 크로스 워프 모핑 셰이더 전환 효과
 
-# Cross Warp Morph
-
 크로스 워프 모핑 셰이더 전환 효과
 
 `transition` `shader`

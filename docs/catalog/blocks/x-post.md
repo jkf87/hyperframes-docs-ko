@@ -2,8 +2,6 @@
 
 > 참여 지표가 포함된 애니메이션 X/Twitter 게시물 카드 오버레이
 
-# X Post Card
-
 참여 지표가 포함된 애니메이션 X/Twitter 게시물 카드 오버레이
 
 `social` `overlay` `twitter`
