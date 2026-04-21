@@ -43,19 +43,19 @@ export const generatedSidebar = [
     "text": "개념",
     "items": [
       {
-        "text": "Compositions",
+        "text": "컴포지션",
         "link": "/concepts/compositions"
       },
       {
-        "text": "Data Attributes",
+        "text": "데이터 속성",
         "link": "/concepts/data-attributes"
       },
       {
-        "text": "Deterministic Rendering",
+        "text": "결정적 렌더링",
         "link": "/concepts/determinism"
       },
       {
-        "text": "Frame Adapters",
+        "text": "프레임 어댑터",
         "link": "/concepts/frame-adapters"
       }
     ]
@@ -64,31 +64,31 @@ export const generatedSidebar = [
     "text": "가이드",
     "items": [
       {
-        "text": "Common Mistakes",
+        "text": "흔한 실수",
         "link": "/guides/common-mistakes"
       },
       {
-        "text": "GSAP Animation",
+        "text": "GSAP 애니메이션",
         "link": "/guides/gsap-animation"
       },
       {
-        "text": "Performance",
+        "text": "성능",
         "link": "/guides/performance"
       },
       {
-        "text": "Prompt Guide",
+        "text": "프롬프트 가이드",
         "link": "/guides/prompting"
       },
       {
-        "text": "Rendering",
+        "text": "렌더링",
         "link": "/guides/rendering"
       },
       {
-        "text": "Troubleshooting",
+        "text": "문제 해결",
         "link": "/guides/troubleshooting"
       },
       {
-        "text": "Website to Video",
+        "text": "웹사이트를 비디오로",
         "link": "/guides/website-to-video"
       }
     ]
@@ -126,7 +126,7 @@ export const generatedSidebar = [
     "text": "레퍼런스",
     "items": [
       {
-        "text": "HTML Schema Reference",
+        "text": "HTML 스키마 레퍼런스",
         "link": "/reference/html-schema"
       }
     ]
@@ -308,7 +308,7 @@ export const generatedSidebar = [
     "text": "기여",
     "items": [
       {
-        "text": "Testing Local CLI Changes",
+        "text": "로컬 CLI 변경 사항 테스트",
         "link": "/contributing/testing-local-changes"
       }
     ]

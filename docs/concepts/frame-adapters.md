@@ -1,4 +1,4 @@
-# Frame Adapters
+# 프레임 어댑터
 
 > Hyperframes에 원하는 애니메이션 런타임을 연결하세요.
 
