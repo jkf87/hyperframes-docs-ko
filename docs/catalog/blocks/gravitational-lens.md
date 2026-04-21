@@ -1,4 +1,4 @@
-# Gravitational Lens
+# 중력 렌즈
 
 > 중력 렌즈 왜곡이 적용된 셰이더 전환 효과
 

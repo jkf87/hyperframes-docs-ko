@@ -1,4 +1,4 @@
-# SDF Iris
+# SDF 아이리스
 
 > SDF(Signed Distance Field) 아이리스 리빌을 사용한 셰이더 트랜지션
 

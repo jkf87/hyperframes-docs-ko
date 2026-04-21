@@ -1,4 +1,4 @@
-# Other Transitions
+# 기타 전환
 
 > 다양한 창의적 트랜지션 쇼케이스
 

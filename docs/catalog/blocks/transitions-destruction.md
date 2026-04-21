@@ -1,4 +1,4 @@
-# Destruction Transitions
+# 파괴 전환
 
 > 파괴적인 분해 전환 효과 모음
 

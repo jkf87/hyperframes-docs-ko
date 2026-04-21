@@ -1,4 +1,4 @@
-# Scale Transitions
+# 스케일 전환
 
 > 스케일 및 줌 전환 효과 모음
 

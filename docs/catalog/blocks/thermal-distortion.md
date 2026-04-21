@@ -1,4 +1,4 @@
-# Thermal Distortion
+# 열 왜곡
 
 > 열 아지랑이 왜곡 효과를 사용한 셰이더 전환
 

@@ -1,4 +1,4 @@
-# Dissolve Transitions
+# 디졸브 전환
 
 > 디졸브 및 페이드 트랜지션 쇼케이스
 

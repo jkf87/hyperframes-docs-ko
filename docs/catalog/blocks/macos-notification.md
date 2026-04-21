@@ -1,4 +1,4 @@
-# macOS Notification
+# macOS 알림
 
 > 앱 아이콘과 메시지가 포함된 애니메이션 macOS 스타일 알림 배너
 

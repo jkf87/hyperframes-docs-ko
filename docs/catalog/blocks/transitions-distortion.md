@@ -1,4 +1,4 @@
-# Distortion Transitions
+# 왜곡 전환
 
 > 워프 및 왜곡 전환 쇼케이스
 

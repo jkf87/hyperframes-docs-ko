@@ -1,4 +1,4 @@
-# Spotify Now Playing
+# Spotify 지금 재생 중
 
 > 앨범 아트와 프로그레스 바가 있는 애니메이션 Spotify 재생 중 카드
 
