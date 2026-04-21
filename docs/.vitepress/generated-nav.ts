@@ -135,91 +135,91 @@ export const generatedSidebar = [
     "text": "카탈로그",
     "items": [
       {
-        "text": "App Showcase",
+        "text": "앱 쇼케이스",
         "link": "/catalog/blocks/app-showcase"
       },
       {
-        "text": "Chromatic Radial Split",
+        "text": "색수차 방사형 분할",
         "link": "/catalog/blocks/chromatic-radial-split"
       },
       {
-        "text": "Cinematic Zoom",
+        "text": "시네마틱 줌",
         "link": "/catalog/blocks/cinematic-zoom"
       },
       {
-        "text": "Cross Warp Morph",
+        "text": "크로스 워프 모프",
         "link": "/catalog/blocks/cross-warp-morph"
       },
       {
-        "text": "Data Chart",
+        "text": "데이터 차트",
         "link": "/catalog/blocks/data-chart"
       },
       {
-        "text": "Domain Warp Dissolve",
+        "text": "도메인 워프 디졸브",
         "link": "/catalog/blocks/domain-warp-dissolve"
       },
       {
-        "text": "Flash Through White",
+        "text": "화이트 플래시 전환",
         "link": "/catalog/blocks/flash-through-white"
       },
       {
-        "text": "Flowchart",
+        "text": "플로차트",
         "link": "/catalog/blocks/flowchart"
       },
       {
-        "text": "Glitch",
+        "text": "글리치",
         "link": "/catalog/blocks/glitch"
       },
       {
-        "text": "Gravitational Lens",
+        "text": "중력 렌즈",
         "link": "/catalog/blocks/gravitational-lens"
       },
       {
-        "text": "Instagram Follow",
+        "text": "인스타그램 팔로우",
         "link": "/catalog/blocks/instagram-follow"
       },
       {
-        "text": "Light Leak",
+        "text": "라이트 리크",
         "link": "/catalog/blocks/light-leak"
       },
       {
-        "text": "Logo Outro",
+        "text": "로고 아웃트로",
         "link": "/catalog/blocks/logo-outro"
       },
       {
-        "text": "macOS Notification",
+        "text": "macOS 알림",
         "link": "/catalog/blocks/macos-notification"
       },
       {
-        "text": "Reddit Post Card",
+        "text": "레딧 게시물 카드",
         "link": "/catalog/blocks/reddit-post"
       },
       {
-        "text": "Ridged Burn",
+        "text": "리지드 번",
         "link": "/catalog/blocks/ridged-burn"
       },
       {
-        "text": "Ripple Waves",
+        "text": "리플 웨이브",
         "link": "/catalog/blocks/ripple-waves"
       },
       {
-        "text": "SDF Iris",
+        "text": "SDF 아이리스",
         "link": "/catalog/blocks/sdf-iris"
       },
       {
-        "text": "Spotify Now Playing",
+        "text": "Spotify 지금 재생 중",
         "link": "/catalog/blocks/spotify-card"
       },
       {
-        "text": "Swirl Vortex",
+        "text": "소용돌이 보텍스",
         "link": "/catalog/blocks/swirl-vortex"
       },
       {
-        "text": "Thermal Distortion",
+        "text": "열 왜곡",
         "link": "/catalog/blocks/thermal-distortion"
       },
       {
-        "text": "TikTok Follow",
+        "text": "틱톡 팔로우",
         "link": "/catalog/blocks/tiktok-follow"
       },
       {
@@ -227,79 +227,79 @@ export const generatedSidebar = [
         "link": "/catalog/blocks/transitions-3d"
       },
       {
-        "text": "Blur Transitions",
+        "text": "블러 전환",
         "link": "/catalog/blocks/transitions-blur"
       },
       {
-        "text": "Cover Transitions",
+        "text": "커버 전환",
         "link": "/catalog/blocks/transitions-cover"
       },
       {
-        "text": "Destruction Transitions",
+        "text": "파괴 전환",
         "link": "/catalog/blocks/transitions-destruction"
       },
       {
-        "text": "Dissolve Transitions",
+        "text": "디졸브 전환",
         "link": "/catalog/blocks/transitions-dissolve"
       },
       {
-        "text": "Distortion Transitions",
+        "text": "왜곡 전환",
         "link": "/catalog/blocks/transitions-distortion"
       },
       {
-        "text": "Grid Transitions",
+        "text": "그리드 전환",
         "link": "/catalog/blocks/transitions-grid"
       },
       {
-        "text": "Light Transitions",
+        "text": "빛 전환",
         "link": "/catalog/blocks/transitions-light"
       },
       {
-        "text": "Mechanical Transitions",
+        "text": "기계식 전환",
         "link": "/catalog/blocks/transitions-mechanical"
       },
       {
-        "text": "Other Transitions",
+        "text": "기타 전환",
         "link": "/catalog/blocks/transitions-other"
       },
       {
-        "text": "Push Transitions",
+        "text": "푸시 전환",
         "link": "/catalog/blocks/transitions-push"
       },
       {
-        "text": "Radial Transitions",
+        "text": "방사형 전환",
         "link": "/catalog/blocks/transitions-radial"
       },
       {
-        "text": "Scale Transitions",
+        "text": "스케일 전환",
         "link": "/catalog/blocks/transitions-scale"
       },
       {
-        "text": "3D UI Reveal",
+        "text": "3D UI 리빌",
         "link": "/catalog/blocks/ui-3d-reveal"
       },
       {
-        "text": "Whip Pan",
+        "text": "휩 팬",
         "link": "/catalog/blocks/whip-pan"
       },
       {
-        "text": "X Post Card",
+        "text": "X 게시물 카드",
         "link": "/catalog/blocks/x-post"
       },
       {
-        "text": "YouTube Lower Third",
+        "text": "YouTube 로워 서드",
         "link": "/catalog/blocks/yt-lower-third"
       },
       {
-        "text": "Grain Overlay",
+        "text": "그레인 오버레이",
         "link": "/catalog/components/grain-overlay"
       },
       {
-        "text": "Grid Pixelate Wipe",
+        "text": "그리드 픽셀화 와이프",
         "link": "/catalog/components/grid-pixelate-wipe"
       },
       {
-        "text": "Shimmer Sweep",
+        "text": "시머 스윕",
         "link": "/catalog/components/shimmer-sweep"
       }
     ]
